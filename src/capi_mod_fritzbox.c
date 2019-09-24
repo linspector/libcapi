@@ -158,6 +158,7 @@ static int fritzboxIsInstalled( void ) {
 	int nHandle;
 	char *pnHostName;
 
+	printf ("MOEP\n");
 	/* Check if we have valid data for hostname and port */
 	pnHostName = capi20ext_get_host();
 	if ( pnHostName == NULL || strlen( pnHostName ) <= 0 ) {

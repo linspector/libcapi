@@ -317,6 +317,7 @@ static int read_config(void)
 	if ((!fp) && ((fp = fopen(globalconfigfilename, "r")) == NULL))
 			return(0);
 
+
 	while(fgets(buf, sizeof(buf), fp)) {
 		buf[strlen(buf)-1] = 0;
 		s = skip_whitespace(buf);
@@ -760,7 +761,6 @@ static void InitModules( char *pnModuleDir ) {
 	}
 	snprintf( anPath, sizeof( anPath ), "%s/%s", anAppPath, pnModuleDir );
 	pnModuleDir = anPath;
-	printf("path: %s\n", pnModuleDir );
 	psDir = opendir( pnModuleDir );
 #else
 	psDir = opendir( pnModuleDir );
@@ -773,7 +773,7 @@ static void InitModules( char *pnModuleDir ) {
 #elif __WIN32__
 		pf_len = snprintf(mod_vers, 10, ".dll");
 #else
-		pf_len = snprintf(mod_vers, 10, ".so.%d", MODULE_LOADER_VERSION);
+		pf_len = snprintf(mod_vers, 10, ".so");
 #endif
 		while ( ( psEntry = readdir( psDir ) ) != NULL )  {
 			/* skip ".", ".." and files which do not end with module suffix */
