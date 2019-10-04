@@ -26,10 +26,18 @@ capi_headers = [
 
 cc = meson.get_compiler('c')
 
+host_system = host_machine.system()
+
+os_darwin = host_system == 'darwin'
+os_linux = host_system == 'linux'
+
 capi_dep = []
 capi_dep += cc.find_library('dl')
-capi_dep += cc.find_library('rt')
 capi_dep += dependency('threads')
+
+if not os_darwin
+capi_dep += cc.find_library('rt')
+endif
 
 install_headers(capi_headers)
 
@@ -49,11 +57,13 @@ capi_shared = shared_library(capi_name,
 
 capi_shared_dep = declare_dependency(link_with : capi_shared)
 
-capi_mod_std = shared_module('capi_mod_std',
-                        capi_mod_std_sources,
-                        dependencies : capi_shared_dep,
-                        install : true,
-                        install_dir : capi_plugins_path)
+if os_linux
+    capi_mod_std = shared_module('capi_mod_std',
+                                 capi_mod_std_sources,
+                                 dependencies : capi_shared_dep,
+                                 install : true,
+                                 install_dir : capi_plugins_path)
+endif
 
 capi_mod_fritzbox = shared_module('capi_mod_fritzbox',
                         capi_mod_fritzbox_sources,
