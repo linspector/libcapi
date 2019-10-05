@@ -769,7 +769,7 @@ static void InitModules( char *pnModuleDir ) {
 	if ( psDir != NULL ) {
 		/* read entry by entry */
 #if __APPLE__ && __MACH__
-		pf_len = snprintf(mod_vers, 10, "%d.dylib", MODULE_LOADER_VERSION);
+		pf_len = snprintf(mod_vers, 10, ".dylib");
 #elif __WIN32__
 		pf_len = snprintf(mod_vers, 10, ".dll");
 #else
