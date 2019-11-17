@@ -35,7 +35,7 @@ capi_dep = []
 capi_dep += cc.find_library('dl')
 capi_dep += dependency('threads')
 
-if not os_darwin
+if os_linux
 capi_dep += cc.find_library('rt')
 endif
 
