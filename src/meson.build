@@ -57,7 +57,7 @@ capi_shared = shared_library(capi_name,
                         version: meson.project_version(),
                         soversion: '3')
 
-capi_shared_dep = declare_dependency(link_with : capi_shared)
+capi_shared_dep = declare_dependency(link_with : capi_shared, dependencies: capi_dep)
 
 if os_linux
     capi_mod_std = shared_module('capi_mod_std',
