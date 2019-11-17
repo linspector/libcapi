@@ -37,6 +37,10 @@ capi_dep += dependency('threads')
 
 if os_linux
 capi_dep += cc.find_library('rt')
+else
+capi_dep += cc.find_library('ws2_32')
+endif
+
 endif
 
 install_headers(capi_headers)
