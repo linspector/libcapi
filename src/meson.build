@@ -26,6 +26,13 @@ capi_headers = [
 
 cc = meson.get_compiler('c')
 
+capi_conf = configuration_data()
+
+void_p = cc.sizeof('void *')
+capi_conf.set('SIZEOF_VOID_P', void_p)
+
+configure_file(output : 'capi_config.h', configuration : capi_conf)
+
 host_system = host_machine.system()
 
 os_darwin = host_system == 'darwin'
