@@ -37,15 +37,18 @@ host_system = host_machine.system()
 
 os_darwin = host_system == 'darwin'
 os_linux = host_system == 'linux'
+os_windows = host_system == 'windows'
 
 capi_dep = []
 capi_dep += cc.find_library('dl')
 capi_dep += dependency('threads')
 
 if os_linux
-capi_dep += cc.find_library('rt')
-else
-capi_dep += cc.find_library('ws2_32')
+  capi_dep += cc.find_library('rt')
+endif
+
+if os_windows
+  capi_dep += cc.find_library('ws2_32')
 endif
 
 install_headers(capi_headers)
