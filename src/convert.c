@@ -4,6 +4,8 @@
  * distributed under the terms of the GNU Public License.
  *
  */
+#include "capi_config.h"
+
 #include <assert.h>
 #include <string.h>
 #include <stdio.h>

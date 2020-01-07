@@ -8,6 +8,8 @@
  * \brief Standard CAPI interface
  */
 
+#include "capi_config.h"
+
 #include <sys/socket.h>
 #include <fcntl.h>
 #include <errno.h>

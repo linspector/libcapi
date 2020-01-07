@@ -26,8 +26,6 @@ extern "C" {
 #include <stddef.h>
 #include <sys/time.h>
 
-#include "capi_config.h"
-
 #define SEND_BUFSIZ		(128+2048)
 
 /* standard CAPI2.0 functions */

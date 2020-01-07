@@ -9,6 +9,11 @@
  *
  */
 
+#include "capi_config.h"
+#ifndef SIZEOF_VOID_P
+#error SIZEOF_VOID_P not defined.
+#endif
+
 #ifndef __WIN32__
 #include <sys/ioctl.h>
 #include <sys/mman.h>

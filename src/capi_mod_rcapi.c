@@ -8,6 +8,8 @@
  * \brief Melware remote capi implementation
  */
 
+#include "capi_config.h"
+
 #ifndef __WIN32__
 #include <sys/socket.h>
 #include <netdb.h>

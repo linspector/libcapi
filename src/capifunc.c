@@ -5,6 +5,7 @@
  *
  */
 
+#include "capi_config.h"
 #include "capi20.h"
 
 unsigned ALERT_REQ (_cmsg *cmsg, _cword ApplId, _cword Messagenumber,
