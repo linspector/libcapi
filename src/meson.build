@@ -59,15 +59,18 @@ else
     capi_plugins_path = join_paths(get_option('prefix'), get_option('libdir'), capi_name)
 endif
 
+inc = include_directories('.')
+
 capi_shared = shared_library(capi_name,
                         capi_sources,
                         dependencies : capi_dep,
+                        include_directories : inc,
                         install: true,
                         c_args : '-DLIBDIR="' + capi_plugins_path + '"',
                         version: meson.project_version(),
                         soversion: '3')
 
-capi_shared_dep = declare_dependency(link_with : capi_shared, dependencies: capi_dep)
+capi_shared_dep = declare_dependency(link_with : capi_shared, dependencies: capi_dep, include_directories: inc)
 
 if os_linux
     capi_mod_std = shared_module('capi_mod_std',
