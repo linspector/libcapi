@@ -832,7 +832,7 @@ unsigned capi20_isinstalled( void ) {
 
 	/* Load and initialize modules */
 #ifdef __WIN32__
-	InitModules( "lib/capi/" );
+	InitModules( "lib/capi20/" );
 #else
 	InitModules( LIBDIR );
 #endif
