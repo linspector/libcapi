@@ -558,7 +558,7 @@ unsigned capi_cmsg2message(_cmsg * cmsg, _cbyte * msg)
 		cmsg->Data64 = 0;
 #else
 		cmsg->Data32 = 0;
-		cmsg->Data64 = (_cqword)(unsigned long)cmsg->Data;
+		cmsg->Data64 = (_cqword)cmsg->Data;
 #endif
 	}
 
@@ -642,7 +642,7 @@ unsigned capi_message2cmsg(_cmsg * cmsg, _cbyte * msg)
 #if SIZEOF_VOID_P == 4
 			cmsg->Data = (void *) cmsg->Data32;
 #else
-			cmsg->Data = (void *)(unsigned long)cmsg->Data64;
+			cmsg->Data = (void *)cmsg->Data64;
 #endif
 	}
 

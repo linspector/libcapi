@@ -19,11 +19,13 @@
 #else
 #include <winsock2.h>
 
+#ifndef EMSGSIZE
 #define EMSGSIZE WSAEMSGSIZE
+#endif
 #define MSG_DONTWAIT 0
 
 typedef unsigned int u_int32_t;
-typedef unsigned long u_int64_t;
+typedef unsigned long long u_int64_t;
 #endif
 
 #include <string.h>
@@ -422,7 +424,7 @@ static unsigned fritzboxGetMessage( int nSock, unsigned nApplId, unsigned char *
 				pnBuffer[ 1 ] = 0;
 			}
 
-			nData = ( ( ( ulong ) pnBuffer ) + CAPIMSG_LEN( pnBuffer ) );
+			nData = ( ( u_int64_t ) pnBuffer ) + CAPIMSG_LEN( pnBuffer );
 			pnBuffer[ 12 ] = pnBuffer[ 13 ] = pnBuffer[ 14 ] = pnBuffer[ 15 ] = 0;
 			pnBuffer[ 22 ] = nData & 0xFF;
 			pnBuffer[ 23 ] = ( nData >>  8 ) & 0xFF;

@@ -23,7 +23,7 @@
 #else
 #include <winsock2.h>
 typedef unsigned int u_int32_t;
-typedef unsigned long u_int64_t;
+typedef unsigned long long u_int64_t;
 #endif
 
 #include <sys/types.h>
@@ -764,7 +764,7 @@ static void InitModules( char *pnModuleDir ) {
 			break;
 		}
 	}
-	snprintf( anPath, sizeof( anPath ), "%s/%s", anAppPath, pnModuleDir );
+	snprintf( anPath, sizeof( anPath ), "%s/../%s", anAppPath, pnModuleDir );
 	pnModuleDir = anPath;
 	psDir = opendir( pnModuleDir );
 #else
@@ -983,7 +983,7 @@ int capi_processMessage( unsigned char *pnMsg, unsigned nApplId, unsigned nComma
 
 				memcpy( &nData64, pnMsg + 22, sizeof( u_int64_t ) );
 				if ( nData64 != 0 ) {
-					pDataPtr = ( void * )( unsigned long ) qword2ptr( nData64 );
+					pDataPtr = ( void * ) qword2ptr( nData64 );
 				} else {
 					/* Assume data after message */
 					pDataPtr = pnMsg + nLen;
