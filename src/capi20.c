@@ -764,7 +764,7 @@ static void InitModules( char *pnModuleDir ) {
 			break;
 		}
 	}
-	snprintf( anPath, sizeof( anPath ), "%s/../%s", anAppPath, pnModuleDir );
+	snprintf( anPath, sizeof( anPath ), "%s/%s", anAppPath, pnModuleDir );
 	pnModuleDir = anPath;
 	psDir = opendir( pnModuleDir );
 #else
